@@ -1,1 +1,1 @@
-starter: python3 Service.py
+web: python3 Service.py
