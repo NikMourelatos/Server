@@ -17,7 +17,7 @@ jobs:
 workflows:
   heroku_deploy:
     jobs:
-      - build
+      #- build
       - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
           requires:
             - build
