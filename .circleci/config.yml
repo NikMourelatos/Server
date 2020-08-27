@@ -5,16 +5,20 @@ orbs:
   heroku: circleci/heroku@1.2.2
 
 jobs:
-  build-and-test:
-    executor: python/default
-    steps:
-      - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
-      - run:
-          - command: python3 hello.py #   command: python3 wsgi.py
+  jobs:
+    build-and-test:
+      executor: python/default
+      steps:
+        - checkout
+        - python/load-cache
+        - python/install-deps
+        - python/save-cache
+        - run:
+            command: python3 hello.py
 workflows:
+  main:
+    jobs:
+      - build-and-test
   heroku_deploy:
     jobs:
       - build
@@ -24,9 +28,7 @@ workflows:
           filters:
             branches:
               only: sequential-branch-filter
-  main:
-    jobs:
-      - build-and-test
+
 
 
 
