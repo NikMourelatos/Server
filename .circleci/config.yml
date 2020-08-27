@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@0.2.1
+  heroku: circleci/heroku@0.0.10. # Invoke the Heroku orb
 
 jobs:
   build-and-test:
@@ -14,6 +15,15 @@ jobs:
       - run:
           command: python3 Service.py
 workflows:
+  heroku_deploy:
+    jobs:
+      - build
+      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
+          #requires:
+           # - build
+          filters:
+            branches:
+              only: sequential-branch-filter
   main:
     jobs:
       - build-and-test
