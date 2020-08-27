@@ -26,4 +26,4 @@ workflows:
               only: sequential-branch-filter
   main:
     jobs:
-      - build-and-test
+     # - build-and-test
