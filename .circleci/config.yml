@@ -13,15 +13,14 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          - command: python3 hello.py
-       #   command: python3 wsgi.py
+          - command: python3 hello.py #   command: python3 wsgi.py
 workflows:
   heroku_deploy:
     jobs:
-      #- build
+      - build
       - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
-          #requires:
-          #  - build
+          requires:
+            - build
           filters:
             branches:
               only: sequential-branch-filter
