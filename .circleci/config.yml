@@ -13,6 +13,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
+          - command: python3 hello.py
        #   command: python3 wsgi.py
 workflows:
   heroku_deploy:
@@ -26,4 +27,7 @@ workflows:
               only: sequential-branch-filter
   main:
     jobs:
-     # - build-and-test
+      - build-and-test
+
+
+
